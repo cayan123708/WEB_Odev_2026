@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakkımda - Mehmet Çayan Çelebi</title>
+  <style>
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: black;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 6px;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0aadff57;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+   nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  gap: 10px;
+}
+nav li {
+  margin: 5px 10px;
+}
+nav a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 8px 12px;
+  display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
+  border-radius: 6px;
+}
+nav a:hover {
+      color: #0056b3;
+    }
+    header {
+      padding-top: 120px;
+      text-align: center;
+      background-color: #817e7e;
+      padding-bottom: 30px;
+    }
+
+    section {
+      scroll-margin-top: 120px;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    section:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    section h2 {
+      font-size: 30px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 18px;
+    }
+
+    ul li {
+      margin: 10px 0;
+    }
+
+    #gallery img {
+      margin: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #eee;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  
+  <nav>
+  <div class="dropdown">
+    <button class="dropbtn">Menü</button>
+    <div class="dropdown-content">
+      <a href="index.html">Hakkımda</a>
+      <a href="cv.html">CV</a>
+      <a href="sehrim.html">Şehrim</a>
+      <a href="takimimiz.html">Takımımız</a>
+      <a href="ilgi alanlarim.html">İlgi Alanlarım</a>
+      <a href="iletisim.html">İletişim</a>
+      <a href="login.html">Login</a>
+    </div>
+  </div>
+</nav>
+
+  <header>
+    <h1>Mehmet Çayan Çelebi</h1>
+    <p>Sakarya'dan selamlar! Kişisel web siteme hoş geldiniz.</p>
+  </header>
+
+  <section id="about">
+    <h2>Hakkımda</h2>
+    <p>Merhaba! Ben Mehmet Çayan Çelebi. Karslıyım ve web teknolojilerine ilgi duyan bir öğrenciyim. Boş zamanlarımda kendimi geliştirmeye, doğayı keşfetmeye ve yeni şeyler öğrenmeye çalışırım.</p>
+  </section>
+
+  <section id="hobbies">
+    <h2>Hobilerim</h2>
+    <ul>
+      <li>⚽ Futbol oynamak</li>
+      <li>📚 Kitap okumak</li>
+      <li>🎵 Müzik dinlemek</li>
+      <li>🥾 Doğa yürüyüşü yapmak</li>
+    </ul>
+  </section>
+
+  <section id="gallery">
+    <h2>Hobilerimden Kareler</h2>
+    <img src="img/futbol oynama.jpeg" alt="Futbol Oynarken" width="180">
+    <img src="img/kitap okumak.jpeg" alt="Kitap Okuma" width="200">
+    <img src="img/müzik dinlemek.jpeg" alt="Müzik Dinlemek" width="200">
+    <img src="img/doğa yürüyüşü.jpeg" alt="Doğa Yürüyüşü" width="180">
+  </section>
+
+  <footer>
+    <p>© 2026 Mehmet Çayan Çelebi</p>
+  </footer>
+
+</body>
+</html>
+
