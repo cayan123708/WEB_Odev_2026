@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV - Mehmet Çayan Çelebi</title>
+  <style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: black;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 6px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+     nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0aadff57;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+   nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  gap: 10px;
+}
+
+nav li {
+  margin: 5px 10px;
+}
+
+nav a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 8px 12px;
+  display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
+  border-radius: 6px;
+}
+
+    nav a:hover {
+      color: #0056b3;
+    }
+
+    header {
+      padding-top: 120px;
+      text-align: center;
+    }
+
+    section {
+      padding: 100px 20px 60px;
+      scroll-margin-top: 120px;
+      background-color: #817e7e;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 30px;
+      color: #333;
+    }
+
+    .card {
+      background-color: rgb(255, 255, 255);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 700px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #eee;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+  <div class="dropdown">
+    <button class="dropbtn">Menü</button>
+    <div class="dropdown-content">
+      <a href="index.html">Hakkımda</a>
+      <a href="cv.html">CV</a>
+      <a href="sehrim.html">Şehrim</a>
+      <a href="takimimiz.html">Takımımız</a>
+      <a href="ilgi alanlarim.html">İlgi Alanlarım</a>
+      <a href="iletisim.html">İletişim</a>
+      <a href="login.html">Login</a>
+    </div>
+  </div>
+</nav>
+
+
+  <header>
+    <h1>Mehmet Çayan Çelebi - CV</h1>
+    <p>Bilgisayar mühendisliği öğrencisi olarak becerilerim ve deneyimlerim hakkında bilgi alabilirsiniz...</p>
+  </header>
+
+  <section id="cv">
+    <h2>CV</h2>
+
+    <div class="card">
+      <h3>Eğitim</h3>
+      <ul>
+        <li><strong>Üniversite:</strong> Sakarya Üniversitesi - Bilgisayar Mühendisliği (2. Sınıf)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Beceriler</h3>
+      <ul>
+        <li>💻 C++, C#, HTML</li>
+        <li>🌐 Web Teknolojileri</li>
+        <li>📊 Problem Çözme ve Algoritma Geliştirme</li>
+        <li>🗣️ İngilizce (B1 Seviyesi)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Deneyim</h3>
+      <p>Henüz profesyonel bir iş deneyimim bulunmamaktadır. Ancak, öğrenmeye ve kendimi geliştirmeye devam ediyorum.</p>
+    </div>
+
+    <div class="card">
+      <h3>Projeler</h3>
+      <ul>
+        <li>Kişisel Web Sitesi - HTML ve CSS ile oluşturuldu.</li>
+        <li>Üniversite Ders Projeleri - Programlama ve algoritma geliştirme üzerine çalışmalar.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Mehmet Çayan Çelebi</p>
+  </footer>
+
+</body>
+</html>
