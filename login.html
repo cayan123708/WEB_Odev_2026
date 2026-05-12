@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Mehmet Çayan Çelebi</title>
+  <style>
+    /* Ortak Menü Stilleri */
+    .dropdown { position: relative; display: inline-block; }
+    .dropbtn { background-color: transparent; color: black; padding: 14px 16px; font-size: 16px; font-weight: bold; border: none; cursor: pointer; }
+    .dropdown-content { display: none; position: absolute; background-color: white; min-width: 160px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 6px; }
+    .dropdown-content a { color: black; padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; }
+    .dropdown-content a:hover { background-color: #f1f1f1; }
+    .dropdown:hover .dropdown-content { display: block; }
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #f8f8f8; }
+    nav { position: fixed; top: 0; width: 100%; background-color: #0aadff57; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+    nav ul { display: flex; justify-content: center; flex-wrap: wrap; list-style: none; margin: 0; padding: 10px; gap: 10px; }
+    nav li { margin: 5px 10px; }
+    nav a { color: black; text-decoration: none; font-weight: bold; font-size: 15px; padding: 8px 12px; display: inline-block; transition: color 0.3s, background-color 0.3s; border-radius: 6px; }
+    nav a:hover { color: #0056b3; }
+    
+    /* Login Sayfası Özel Stilleri */
+    .login-container { max-width: 400px; margin: 150px auto 50px; background: white; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); border-radius: 8px; text-align: center; }
+    .login-container h2 { margin-bottom: 20px; color: #333; }
+    .form-group { margin-bottom: 15px; text-align: left; }
+    .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+    .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+    .error-msg { color: red; font-size: 0.9em; margin-top: 5px; display: none; }
+    .submit-btn { width: 100%; padding: 10px; background-color: #007BFF; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+    .submit-btn:hover { background-color: #0056b3; }
+    .php-error { color: red; font-weight: bold; margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="dropdown">
+      <button class="dropbtn">Menü</button>
+      <div class="dropdown-content">
+        <a href="index.html">Hakkımda</a>
+        <a href="cv.html">CV</a>
+        <a href="sehrim.html">Şehrim</a>
+        <a href="takimimiz.html">Takımımız</a>
+        <a href="ilgi alanlarim.html">İlgi Alanlarım</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="login-container">
+    <h2>Sisteme Giriş</h2>
+    
+    <div id="phpErrorBox" class="php-error"></div>
+
+    <form id="loginForm" action="login.php" method="POST">
+      <div class="form-group">
+        <label for="email">Kullanıcı Adı (Öğrenci E-postası)</label>
+        <input type="text" id="email" name="email" placeholder="örn: b2412100001@sakarya.edu.tr">
+        <div id="emailError" class="error-msg">Geçerli bir Sakarya Üniversitesi e-posta adresi giriniz.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="sifre">Şifre (Öğrenci Numarası)</label>
+        <input type="password" id="sifre" name="sifre" placeholder="Öğrenci Numaranız">
+        <div id="sifreError" class="error-msg">Şifre alanı boş bırakılamaz.</div>
+      </div>
+
+      <button type="submit" class="submit-btn">Giriş Yap</button>
+    </form>
+  </div>
+
+  <script>
+    // URL'deki hata parametresini kontrol et PHP'den dönen hataları göster
+    const urlParams = new URLSearchParams(window.location.search);
+    const hata = urlParams.get('hata');
+    const phpErrorBox = document.getElementById('phpErrorBox');
+    
+    if (hata === 'bos') {
+        phpErrorBox.innerText = "Lütfen tüm alanları doldurun!";
+    } else if (hata === 'yanlis') {
+        phpErrorBox.innerText = "Kullanıcı adı veya şifre hatalı!";
+    }
+
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      // hataları gizleme işi
+      document.getElementById('emailError').style.display = 'none';
+      document.getElementById('sifreError').style.display = 'none';
+      phpErrorBox.innerText = ''; // Varsa eski PHP hatasını temizle
+
+      const email = document.getElementById('email').value.trim();
+      const sifre = document.getElementById('sifre').value.trim();
+      
+      let isValid = true;
+
+
+      const emailRegex = /^[a-zA-Z0-9.]+@(ogr\.)?sakarya\.edu\.tr$/;
+
+      if (email === '' || !emailRegex.test(email)) {
+        document.getElementById('emailError').style.display = 'block';
+        isValid = false;
+      }
+
+      // Şifre  kontrolü
+      if (sifre === '') {
+        document.getElementById('sifreError').style.display = 'block';
+        isValid = false;
+      }
+
+      // Eğer hata varsa formun gönderilmesini durdur
+      if (!isValid) {
+        e.preventDefault();
+      }
+    });
+  </script>
+
+</body>
+</html>

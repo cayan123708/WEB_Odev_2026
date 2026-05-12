@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>İletişim - Mehmet Çayan Çelebi</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background-color: #f5f5f5;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      margin-right: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button[type="reset"] {
+      background-color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <form @submit.prevent="submitForm">
+    <h2>İletişim Formu</h2>
+
+    <label>Ad:</label>
+    <input type="text" v-model="form.ad">
+    <span class="error" v-if="errors.ad">{{ errors.ad }}</span>
+
+    <label>Soyad:</label>
+    <input type="text" v-model="form.soyad">
+    <span class="error" v-if="errors.soyad">{{ errors.soyad }}</span>
+
+    <label>Email:</label>
+    <input type="text" v-model="form.email">
+    <span class="error" v-if="errors.email">{{ errors.email }}</span>
+
+    <label>Telefon:</label>
+    <input type="text" v-model="form.telefon">
+    <span class="error" v-if="errors.telefon">{{ errors.telefon }}</span>
+
+    <label>Cinsiyet:</label>
+    <select v-model="form.cinsiyet">
+      <option disabled value="">Seçiniz</option>
+      <option>Erkek</option>
+      <option>Kadın</option>
+      <option>Diğer</option>
+    </select>
+    <span class="error" v-if="errors.cinsiyet">{{ errors.cinsiyet }}</span>
+
+    <label>Mesaj:</label>
+    <textarea v-model="form.mesaj"></textarea>
+    <span class="error" v-if="errors.mesaj">{{ errors.mesaj }}</span>
+
+    <button type="button" @click="validateWithVue">Vue.js ile Doğrula</button>
+    <button type="button" @click="validateWithJS">JavaScript ile Doğrula</button>
+    <button type="submit">Gönder</button>
+    <button type="reset" @click="clearForm">Temizle</button>
+  </form>
+</div>
+
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    form: {
+      ad: '',
+      soyad: '',
+      email: '',
+      telefon: '',
+      cinsiyet: '',
+      mesaj: ''
+    },
+    errors: {}
+  },
+  methods: {
+    clearForm() {
+      this.form = {
+        ad: '', soyad: '', email: '', telefon: '', cinsiyet: '', mesaj: ''
+      };
+      this.errors = {};
+    },
+    validateWithVue() {
+      this.errors = {};
+      if (!this.form.ad) this.errors.ad = "Ad boş bırakılamaz.";
+      if (!this.form.soyad) this.errors.soyad = "Soyad boş bırakılamaz.";
+      if (!/\S+@\S+\.\S+/.test(this.form.email)) this.errors.email = "Geçerli bir email girin.";
+      if (!/^\d+$/.test(this.form.telefon)) this.errors.telefon = "Telefon no sadece rakamlardan oluşmalı.";
+      if (!this.form.cinsiyet) this.errors.cinsiyet = "Cinsiyet seçilmelidir.";
+      if (!this.form.mesaj) this.errors.mesaj = "Mesaj boş bırakılamaz.";
+    },
+    validateWithJS() {
+      this.errors = {};
+      const f = this.form;
+      if (f.ad.trim() === '') alert('Ad alanı boş.');
+      if (f.soyad.trim() === '') alert('Soyad alanı boş.');
+      if (!/\S+@\S+\.\S+/.test(f.email)) alert('E-posta formatı hatalı.');
+      if (!/^\d+$/.test(f.telefon)) alert('Telefon yalnızca rakam içermelidir.');
+      if (!f.cinsiyet) alert('Cinsiyet seçilmelidir.');
+      if (f.mesaj.trim() === '') alert('Mesaj boş olamaz.');
+    },
+    submitForm() {
+      this.validateWithVue();
+      if (Object.keys(this.errors).length === 0) {
+        localStorage.setItem('formData', JSON.stringify(this.form));
+        window.location.href = "form-sonuc.html";
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
