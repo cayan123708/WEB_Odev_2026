@@ -5,54 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>İlgi Alanlarım - Mehmet Çayan Çelebi</title>
   <style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+    .dropbtn {
+      background-color: transparent;
+      color: black;
+      padding: 14px 16px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
 
-.dropbtn {
-  background-color: transparent;
-  color: black;
-  padding: 14px 16px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 6px;
+    }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-  border-radius: 6px;
-}
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+    }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-size: 14px;
-}
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
 
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(to right, #a6a3a3 50%, #a6a3a3 50%);
     }
- nav {
+
+    nav {
       position: fixed;
       top: 0;
       width: 100%;
@@ -61,30 +61,30 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-   nav ul {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 10px;
-  gap: 10px;
-}
+    nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0;
+      padding: 10px;
+      gap: 10px;
+    }
 
-nav li {
-  margin: 5px 10px;
-}
+    nav li {
+      margin: 5px 10px;
+    }
 
-nav a {
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 15px;
-  padding: 8px 12px;
-  display: inline-block;
-  transition: color 0.3s, background-color 0.3s;
-  border-radius: 6px;
-}
+    nav a {
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+      padding: 8px 12px;
+      display: inline-block;
+      transition: color 0.3s, background-color 0.3s;
+      border-radius: 6px;
+    }
 
     nav a:hover {
       color: #0056b3;
@@ -101,10 +101,12 @@ nav a {
     }
 
     section h2 {
-      text-align: center;
-      margin-bottom: 40px;
+      text-align: left;
+      margin-bottom: 30px;
       font-size: 30px;
       color: #333;
+      border-bottom: 2px solid #555;
+      padding-bottom: 10px;
     }
 
     .flex-container {
@@ -123,36 +125,41 @@ nav a {
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       border-radius: 8px;
       flex: 1 1 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     @media (min-width: 600px) {
       .card {
-        flex: 1 1 48%;
-      }
-
-      #book-card .card {
-        max-width: 45%;
+        flex: 1 1 45%;
       }
     }
 
     .card img {
       width: 100%;
-      max-height: 300px;
+      height: 250px;
       object-fit: contain;
       border-radius: 8px;
       margin-bottom: 15px;
+      background-color: #f9f9f9;
     }
 
     #movie-card {
-      flex: 1 1 48%;
+      flex: 1 1 100%;
     }
 
-    #book-card {
+    #book-card, #song-card {
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      justify-content: flex-start;
       gap: 20px;
-      flex: 1 1 48%;
+      width: 100%;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: auto; 
+      outline: none;
     }
 
     footer {
@@ -160,47 +167,55 @@ nav a {
       padding: 30px;
       background-color: #817e7e;
       margin-top: 40px;
+      color: white;
     }
   </style>
 </head>
 <body>
 
- <nav>
-  <div class="dropdown">
-    <button class="dropbtn">Menü</button>
-    <div class="dropdown-content">
-      <a href="index.html">Hakkımda</a>
-      <a href="cv.html">CV</a>
-      <a href="sehrim.html">Şehrim</a>
-      <a href="takimimiz.html">Takımımız</a>
-      <a href="ilgi alanlarim.html">İlgi Alanlarım</a>
-      <a href="iletisim.html">İletişim</a>
-      <a href="login.html">Login</a>
+  <nav>
+    <div class="dropdown">
+      <button class="dropbtn">Menü</button>
+      <div class="dropdown-content">
+        <a href="index.html">Hakkımda</a>
+        <a href="cv.html">CV</a>
+        <a href="sehrim.html">Şehrim</a>
+        <a href="takimimiz.html">Takımımız</a>
+        <a href="ilgi alanlarim.html">İlgi Alanlarım</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="login.html">Login</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <header>
     <h1>İlgi Alanlarım</h1>
-    <p>Film izlemek ve kitap okumak</p>
+    <p>Film izlemek, kitap okumak ve müzik dinlemek</p>
   </header>
 
   <section>
     <div class="flex-container" style="flex-direction: column; gap: 60px;">
 
-      <div>
-        <h2 style="text-align: left;">Filmler</h2>
-        <div class="flex-container">
+      <div style="width: 100%;">
+        <h2>Filmler</h2>
+        <div class="flex-container" style="padding: 0;">
           <div class="card" id="movie-card">
             <p>Film verileri yükleniyor...</p>
           </div>
         </div>
       </div>
 
-      <div>
-        <h2 style="text-align: left;">Kitaplar</h2>
+      <div style="width: 100%;">
+        <h2>Kitaplar</h2>
         <div id="book-card">
-          <p>Kitap verileri yükleniyor...</p>
+          <p>Kitap verileri yükleniyor, lütfen bekleyin...</p>
+        </div>
+      </div>
+
+      <div style="width: 100%;">
+        <h2>Şarkılar</h2>
+        <div id="song-card">
+          <p>Şarkı verileri yükleniyor...</p>
         </div>
       </div>
 
@@ -208,55 +223,114 @@ nav a {
   </section>
 
   <footer>
-    <p>© 2025 Mehmet Çayan Çelebi</p>
+    <p>© 2026 Mehmet Çayan Çelebi</p>
   </footer>
 
   <script>
+    // --- 1. Film Çekme İşlemi (OMDb API) ---
     fetch('https://www.omdbapi.com/?apikey=8e2ba6d7&t=the good the bad and the ugly')
       .then(res => res.json())
       .then(data => {
         document.getElementById("movie-card").innerHTML = `
-          <img src="${data.Poster}" alt="${data.Title}">
+          <div style="text-align: center;">
+            <img src="${data.Poster}" alt="${data.Title}" style="max-height: 400px; object-fit: cover;">
+          </div>
           <h3>${data.Title} (${data.Year})</h3>
           <p><strong>IMDb:</strong> ${data.imdbRating}</p>
           <p>${data.Plot}</p>
         `;
       });
 
-    const queries = [
+    // --- 2. Kitap Çekme İşlemi (Open Library API - Limitsiz) ---
+    const bookQueries = [
       'suç ve ceza',
       'demir ökçe',
       'insancıklar',
-      'sefiller',
+      'sefiller'
     ];
 
-    const container = document.getElementById("book-card");
-    container.innerHTML = '';
+    const bookContainer = document.getElementById("book-card");
 
-    Promise.all(
-      queries.map(q =>
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&langRestrict=tr&maxResults=5`)
-          .then(res => res.json())
-          .then(data => {
-            if(data.items && data.items.length > 0) {
-              const book = data.items[0].volumeInfo;
-              const card = document.createElement('div');
-              card.className = 'card';
+    async function fetchBooks() {
+      bookContainer.innerHTML = ''; 
+      
+      for (let q of bookQueries) {
+        try {
+          const res = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(q)}&limit=1`);
+          const data = await res.json();
 
-              card.innerHTML = `
-                <img src="${book.imageLinks?.thumbnail || ''}" alt="${book.title}" />
-                <h3>${book.title}</h3>
-                <p>${book.description ? book.description.substring(0, 950) + '...' : "Açıklama yok."}</p>
-              `;
+          if (data.docs && data.docs.length > 0) {
+            const book = data.docs[0];
+            const coverUrl = book.cover_i 
+              ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` 
+              : 'https://via.placeholder.com/150x200?text=Kapak+Yok';
+            const author = book.author_name ? book.author_name[0] : 'Bilinmeyen Yazar';
+            const year = book.first_publish_year ? book.first_publish_year : 'Bilinmiyor';
 
-              container.appendChild(card);
-            }
-          })
-      )
-    ).catch(err => {
-      container.innerHTML = '<p>Kitap verileri yüklenirken hata oluştu.</p>';
-      console.error(err);
-    });
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            card.innerHTML = `
+              <img src="${coverUrl}" alt="${book.title}" />
+              <h3>${book.title}</h3>
+              <p><strong>Yazar:</strong> ${author}</p>
+              <p><strong>İlk Basım:</strong> ${year}</p>
+            `;
+
+            bookContainer.appendChild(card);
+          }
+        } catch (err) {
+          console.error(`Kitap hatası: ${q}`, err);
+        }
+      }
+    }
+    fetchBooks();
+
+    // --- 3. Şarkı Çekme İşlemi (iTunes API) ---
+    const songQueries = [
+      'sun is shining bob marley',
+      'bohemian rhapsody queen',
+      'another brick in the wall part 2 pink floyd',
+      'donde estas yolanda pink martini'
+    ];
+
+    const songContainer = document.getElementById("song-card");
+
+    async function fetchSongs() {
+      songContainer.innerHTML = ''; 
+
+      for (let q of songQueries) {
+        try {
+          const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&entity=song&limit=1`);
+          const data = await res.json();
+
+          if (data.results && data.results.length > 0) {
+            const song = data.results[0];
+            const highResImage = song.artworkUrl100.replace('100x100bb', '300x300bb');
+
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            card.innerHTML = `
+              <img src="${highResImage}" alt="${song.trackName}" style="object-fit: cover; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+              <h3 style="margin-bottom: 5px;">${song.trackName}</h3>
+              <p style="margin-top: 0; color: #555;"><strong>Sanatçı:</strong> ${song.artistName}</p>
+              
+              <audio controls>
+                <source src="${song.previewUrl}" type="audio/mpeg">
+                Tarayıcınız oynatıcıyı desteklemiyor.
+              </audio>
+            `;
+
+            songContainer.appendChild(card);
+          }
+        } catch (err) {
+          console.error(`Şarkı hatası: ${q}`, err);
+        }
+      }
+    }
+    fetchSongs();
+
   </script>
 
 </body>
